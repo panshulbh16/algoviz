@@ -1,0 +1,30 @@
+.array-container {
+  
+    margin: 100px auto;
+    align-items: center;
+}
+
+button {
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 12px;
+    margin-left: 10px;
+    transition-duration: 0.4s;
+}
+    button:hover {
+        background-color: purple; /* Green */
+        color: white;
+    }
+
+.array-bar {
+    width: 15px;
+    background-color: lightpink;
+    display: inline-block;
+    margin: 0 1px;
+}
