@@ -1,6 +1,7 @@
 import React from 'react';
 import { getMergeSortAnimations } from '../SortingAlgorithms/MergeSort.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/BubbleSort.js';
+import { getSelectionSortAnimations } from '../SortingAlgorithms/SelectionSort.js';
 import './SortingVisualizer.css';
 
 
@@ -20,35 +21,43 @@ export default class SortingVisualizer extends React.Component {
     resetArray() {
         const array = [];
         for (let i = 0; i < 30; i++) {
-            array.push(randomIntFromInterval(5, 500));
+            array.push(randomIntFromInterval(5, 130));
         }
         this.setState({ array });
     }
 
     mergeSort() {
         const animations = getMergeSortAnimations(this.state.array);
+        console.log(animations)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
+            // const isColorChange = animations[i][0] === "compare1" || animations[i][0] === "compare2";
             const isColorChange = i % 3 !== 2;
-            if (isColorChange) {
-                const [barOneIdx, barTwoIdx] = animations[i];
+            console.log(isColorChange);
+            if (isColorChange === true) {
+                const [compare, barOneIdx, barTwoIdx] = animations[i];
+                const color = (animations[i][0] == "compare1" ) ? 'purple' : 'lightpink';
+                // console.log(compare, barOneIdx, barTwoIdx);
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i % 3 === 0 ? 'purple' : 'lightpink';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 10);
-            } else {
+                }, i * 60);
+            }
+            else if(animations[i][0] === "swap"){
                 setTimeout(() => {
-                    const [barOneIdx, newHeight] = animations[i];
+                    const [swap, barOneIdx, newHeight] = animations[i];
+                    // console.log(swap, barOneIdx, newHeight);
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-                }, i * 10);
+                }, i * 60);
             }
         }
     }
-    /*
+
+
+/*
     quickSort() {
 
 
@@ -58,32 +67,65 @@ export default class SortingVisualizer extends React.Component {
 
     }
 */
+
+    selectionSort(){
+        const animations = getSelectionSortAnimations(this.state.array);
+        console.log(animations);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            // const isColorChange = i % 3 !== 2;
+            const isColorChange = animations[i][0] == "compare1" || animations[i][0] == "compare2";
+            // console.log(isColorChange, i);
+            if (isColorChange) {
+                const color = (animations[i][0] == "compare1") ? 'purple' : 'lightpink';
+                const [compare, barOneIdx, barTwoIdx] = animations[i];
+                // console.log("barOneIdx", barOneIdx);
+                // console.log("barTwoIdx", barTwoIdx);
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                // const color = i % 3 === 0 ? 'purple' : 'lightpink';      x
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * 100);
+            } else {
+                setTimeout(() => {
+                    const [swap, barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * 100);
+            }
+        }
+    }
+
     bubbleSort() {
-        // const animations = getBubbleSortAnimations(this.state.array);
-        // console.log(animations);
-        // for (let i = 0; i < animations.length; i++) {
-        //     const arrayBars = document.getElementsByClassName('array-bar');
-        //     const isColorChange = i % 3 !== 2;
-        //     console.log(isColorChange, i);
-        //     if (isColorChange) {
-        //         const [barOneIdx, barTwoIdx] = animations[i];
-        //         console.log(barOneIdx);
-        //         console.log(barTwoIdx);
-        //         const barOneStyle = arrayBars[barOneIdx].style;
-        //         const barTwoStyle = arrayBars[barTwoIdx].style;
-        //         const color = i % 3 === 0 ? 'purple' : 'lightpink';
-        //         setTimeout(() => {
-        //             barOneStyle.backgroundColor = color;
-        //             barTwoStyle.backgroundColor = color;
-        //         }, i * 10);
-        //     } else {
-        //         setTimeout(() => {
-        //             const [barOneIdx, newHeight] = animations[i];
-        //             const barOneStyle = arrayBars[barOneIdx].style;
-        //             barOneStyle.height = `${newHeight}px`;
-        //         }, i * 10);
-        //     }
-        // }
+        const animations = getBubbleSortAnimations(this.state.array);
+        console.log(animations);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            // const isColorChange = i % 3 !== 2;
+            const isColorChange = animations[i][0] == "compare1" || animations[i][0] == "compare2";
+            // console.log(isColorChange, i);
+            if (isColorChange) {
+                const color = (animations[i][0] == "compare1") ? 'purple' : 'lightpink';
+                const [compare, barOneIdx, barTwoIdx] = animations[i];
+                // console.log("barOneIdx", barOneIdx);
+                // console.log("barTwoIdx", barTwoIdx);
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                // const color = i % 3 === 0 ? 'purple' : 'lightpink';      x
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * 10);
+            } else {
+                setTimeout(() => {
+                    const [swap, barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * 10);
+            }
+        }
     }
 
     render() {
@@ -107,6 +149,8 @@ export default class SortingVisualizer extends React.Component {
                     <button onClick={() => this.mergeSort()}>Merge Sort</button>
 
                     <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+
+                    <button onClick={() => this.selectionSort()}>Selection Sort</button>
 
                 </div>
 
