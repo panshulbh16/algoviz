@@ -62,29 +62,29 @@ export default class SortingVisualizer extends React.Component {
 
 
     selectionSort(){
-        // const [animations, array] = getBubbleSortAnimations(this.state.array);
-        // console.log(animations)
-        // for (let i = 0; i < animations.length; i++) {
-        //     const isColorChange = animations[i][0] === "compare1" || animations[i][0] === "compare2";
-        //     const arrayBars = document.getElementsByClassName('array-bar');
-        //     if(isColorChange === true) {
-        //         const color = (animations[i][0] === "compare1") ? 'purple' : 'pink';
-        //         const [comparision, barOneIndex, barTwoIndex] = animations[i];
-        //         const barOneStyle = arrayBars[barOneIndex].style;
-        //         const barTwoStyle = arrayBars[barTwoIndex].style;
-        //         setTimeout(() => {
-        //             barOneStyle.backgroundColor = color;
-        //             barTwoStyle.backgroundColor = color;
-        //         },i * 40);
-        //     }
-        //     else {
-        //         const [swap, barIndex, newHeight] = animations[i];
-        //         const barStyle = arrayBars[barIndex].style;
-        //         setTimeout(() => {
-        //             barStyle.height = `${newHeight}px`;
-        //         },i * 40);  
-        //     }
-        // }
+        const [animations, array] = getBubbleSortAnimations(this.state.array);
+        console.log(animations)
+        for (let i = 0; i < animations.length; i++) {
+            const isColorChange = (animations[i][0] === "compare1") || (animations[i][0] === "compare2");
+            const arrayBars = document.getElementsByClassName('array-bar');
+            if(isColorChange === true) {
+                const color = (animations[i][0] === "compare1") ? 'purple' : 'pink';
+                const [comparision, barOneIndex, barTwoIndex] = animations[i];
+                const barOneStyle = arrayBars[barOneIndex].style;
+                const barTwoStyle = arrayBars[barTwoIndex].style;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                },i * 40);
+            }
+            else {
+                const [swap, barIndex, newHeight] = animations[i];
+                const barStyle = arrayBars[barIndex].style;
+                setTimeout(() => {
+                    barStyle.height = `${newHeight}px`;
+                },i * 40);  
+            }
+        }
     }
 
     bubbleSort() {
