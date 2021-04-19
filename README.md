@@ -1,4 +1,7 @@
 # Getting Started with Create React App
+The Live demo of the project can be viewed at: https://algoviz1.herokuapp.com/
+
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
