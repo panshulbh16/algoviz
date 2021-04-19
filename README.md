@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Project Deployed on Heroku
 The Live demo of the project can be viewed at: https://algoviz1.herokuapp.com/
 
 # Getting Started with Create React App
