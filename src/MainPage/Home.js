@@ -14,15 +14,22 @@ export default class Home extends React.Component{
 	}
 	render(){
 		return(
-      		<div>
-				<Link to="/sorting">
-	      			<Button className="btn btn-warning btn-lg sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
-	      		</Link>
+			<div>
+	      		<div className="route-to">
+					<Link to="/sorting">
+		      			<Button className="btn btn-warning btn-lg sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
+		      		</Link>
 
-	      		<Link to="/pathfinding">
-	      			<Button className="btn btn-warning btn-lg path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
-	      		</Link>
-	      	</div>
+		      		<Link to="/pathfinding">
+		      			<Button className="btn btn-warning btn-lg path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
+		      		</Link>
+		      	</div>
+		      	<div>
+		      		<Link to="/about">
+		      			<p className="fixed-btn" type='submit'>About US</p>
+		      		</Link>
+		      	</div>
+		      </div>
 
 		);
 	}
