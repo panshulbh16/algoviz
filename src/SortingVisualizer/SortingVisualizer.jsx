@@ -89,7 +89,7 @@ export default class SortingVisualizer extends React.Component {
 
     bubbleSort() {
         const [animations,sortArray] = getBubbleSortAnimations(this.state.array);
-        console.log(animations)
+        console.log(animations);
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = animations[i][0] === "compare1" || animations[i][0] === "compare2";
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -105,7 +105,6 @@ export default class SortingVisualizer extends React.Component {
             }
             else {
                 const [swap, barIndex, newHeight] = animations[i];
-                console.log(swap, barIndex, newHeight);
                 const barStyle = arrayBars[barIndex].style;
                 setTimeout(() => {
                     barStyle.height = `${newHeight}px`;
@@ -130,7 +129,7 @@ export default class SortingVisualizer extends React.Component {
                     ))
                 }
                 <hr />
-                
+
                <div>
                     <button onClick={() => this.resetArray()}>Generate New Array</button>
                
