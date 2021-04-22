@@ -1,4 +1,4 @@
-export function getSelectionSortAnimations(array)
+export function getSelectionSortAnimation(array)
 {
     const animations = [];
     if (array.length <= 1)
@@ -20,7 +20,7 @@ function selectionSort(auxiliaryArray, animations){
 			}
 		}	
 		animations.push(["swap", minIndex, auxiliaryArray[i]]);
-		animations.push(["swap", i, auxiliaryArray[minIndex]]);
+		// animations.push(["swap", i, auxiliaryArray[minIndex]]);
 		let temp = auxiliaryArray[minIndex];
 		auxiliaryArray[minIndex] = auxiliaryArray[i];
 		auxiliaryArray[i] = temp; 
