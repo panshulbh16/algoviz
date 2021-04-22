@@ -1,7 +1,7 @@
 import React from 'react';
 import { getMergeSortAnimations } from '../SortingAlgorithms/MergeSort.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/BubbleSort.js';
-import {getSelectionSortAnimation } from '../SortingAlgorithms/SelectionSort';
+import { getSelectionSortAnimation } from '../SortingAlgorithms/SelectionSort.js';
 import './SortingVisualizer.css';
 
 
@@ -62,7 +62,7 @@ export default class SortingVisualizer extends React.Component {
 
 
     selectionSort(){
-        const [animations, array] = getBubbleSortAnimations(this.state.array);
+        const [animations, array] = getSelectionSortAnimation(this.state.array);
         console.log(animations)
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = (animations[i][0] === "compare1") || (animations[i][0] === "compare2");
