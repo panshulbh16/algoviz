@@ -14,33 +14,7 @@ class Cards extends React.Component{
 	render(){
 		return(
 			<div className="all-cards">
-				{/*<div className="card" style={{width: '18rem'}}>
-				  <img className="card-img-top" src="..." alt="Card image cap" />
-				  <div className="card-body">
-				    <h5 className="card-title">Card title</h5>
-				    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <a href="#" className="btn btn-primary">Go somewhere</a>
-				  </div>
-				</div>
-
-				<div className="card" style={{width: '18rem'}}>
-				  <img className="card-img-top" src="..." alt="Card image cap" />
-				  <div className="card-body">
-				    <h5 className="card-title">Card title</h5>
-				    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <a href="#" className="btn btn-primary">Go somewhere</a>
-				  </div>
-				</div>
-				
-				<div className="card" style={{width: '18rem'}}>
-				  <img className="card-img-top" src="..." alt="Card image cap" />
-				  <div className="card-body">
-				    <h5 className="card-title">Card title</h5>
-				    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <a href="#" className="btn btn-primary">Go somewhere</a>
-				  </div>
-				</div>*/}
-				<div className="card" style={{width: '18rem'}}>
+				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/72337293?v=4" alt="Card image cap" />
 				  <div className="card-body">
 				    <h5 className="card-title">Mehul Shrivastava</h5>
@@ -49,7 +23,7 @@ class Cards extends React.Component{
 				  </div>
 				</div>
 
-				<div className="card" style={{width: '18rem'}}>
+				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/46718284?v=4" alt="Card image cap" />
 				  <div className="card-body">
 				    <h5 className="card-title">Neha</h5>
@@ -58,7 +32,7 @@ class Cards extends React.Component{
 				  </div>
 				</div>
 				
-				<div className="card" style={{width: '18rem'}}>
+				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/40309513?v=4" alt="Card image cap" />
 				  <div className="card-body">
 				    <h5 className="card-title">Panshul</h5>
@@ -66,7 +40,7 @@ class Cards extends React.Component{
 				    <a href="#" className="btn btn-primary">Github</a>
 				  </div>
 				</div>
-				<div className="card" style={{width: '18rem'}}>
+				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="..." alt="Card image cap" />
 				  <div className="card-body">
 				    <h5 className="card-title">Parakh</h5>
