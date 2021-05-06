@@ -1,7 +1,7 @@
 export const particlesOptions = {
 	  particles: {
     "number": {
-      "value": 250,
+      "value": 150,
       "density": {
         "enable": true,
         "value_area": 1500
@@ -13,8 +13,8 @@ export const particlesOptions = {
     "shape": {
       "type": "circle",
       "stroke": {
-        "width": 0,
-        "color": "#ffffff"
+        "width": 0.5,
+        "color": "#000000"
       },
       "polygon": {
         "nb_sides": 5
@@ -27,20 +27,20 @@ export const particlesOptions = {
     },
     "opacity": {
       "value": 0.5,
-      "random": false,
+      "random": true,
       "anim": {
         "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
+        "speed": 2.5,
+        "opacity_min": 0.2,
         "sync": false
       }
     },
     "size": {
-      "value": 3,
+      "value": 2,
       "random": true,
       "anim": {
         "enable": false,
-        "speed": 40,
+        "speed": 50,
         "size_min": 0.1,
         "sync": false
       }
@@ -49,7 +49,7 @@ export const particlesOptions = {
       "enable": true,
       "distance": 150,
       "color": "#ffffff",
-      "opacity": 0.4,
+      "opacity": 0.2,
       "width": 1
     },
     "move": {
@@ -61,9 +61,9 @@ export const particlesOptions = {
       "out_mode": "out",
       "bounce": false,
       "attract": {
-        "enable": false,
+        "enable": true,
         "rotateX": 600,
-        "rotateY": 1200
+        "rotateY": 600,
       }
     }
   }

@@ -21,7 +21,7 @@ export default class About extends React.Component{
       			<Cards />
       			<hr />
       			<Link to="/">
-	      			<Button className="btn btn-warning about-btn" type='submit'><h3>X</h3></Button>
+	      			<Button className="btn btn-warning about-btn" type='submit'><h3>About Us</h3></Button>
 	      		</Link>
 
 				<Link to="/sorting">

@@ -26,7 +26,7 @@ export default class Home extends React.Component{
 		      	</div>
 		      	<div>
 		      		<Link to="/about">
-		      			<p className="fixed-btn" type='submit'>About US</p>
+		      			<p className="fixed-btn" type='submit'>About Us</p>
 		      		</Link>
 		      	</div>
 		      </div>

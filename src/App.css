@@ -18,12 +18,12 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #255cf1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ body {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #070707;
 }
 
 @keyframes App-logo-spin {
@@ -47,9 +47,9 @@ body {
 }
 
 .particles {
-  background: #4568DC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */  
-  background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1569d8e1;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000000, #0d0d0e);  /* Chrome 10-25, Safari 5.1-6 */  
+  background: linear-gradient(to right, #030303, #020202); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: fixed;
   top: 0;
   right: 0;
@@ -68,13 +68,13 @@ body {
 /*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
     0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
   color: #fccaff; */
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
-  font-family: "Sacramento", cursive;
+  text-shadow: 0 0 5px #0f0f0f, 0 0 15px #f1f0ed, 0 0 20px #0a0a0a, 0 0 40px #040405, 0 0 60px #eee7e7, 0 0 10px #181716, 0 0 98px #f5f1f1;
+    color: #070706;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding: 100px;
   text-align: center;
-  animation: blink 12s infinite;
-  -webkit-animation: blink 12s infinite;
+  animation: blink 6s infinite;
+  -webkit-animation: blink 6s infinite;
 }
 
 
@@ -98,8 +98,8 @@ body {
 /*     color: #fccaff;
     text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
       0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
+  text-shadow: 0 0 5px #0e0f11, 0 0 15px #edf0f5, 0 0 20px #0b0c0c, 0 0 40px #080808, 0 0 60px #050505, 0 0 10px #f0f2f8, 0 0 98px #0b0c0c;
+    color: #f1f2f8;
   }
 }
 
@@ -107,7 +107,7 @@ body {
   20%,
   24%,
   55% {
-    color: #111;
+    color: rgb(240, 243, 247);
     text-shadow: none;
   }
 
@@ -122,8 +122,8 @@ body {
 /*     color: #fccaff;
     text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
       0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
+  text-shadow: 0 0 5px #0d7feb, 0 0 15px #030303, 0 0 20px #0d7feb, 0 0 40px #0d7feb, 0 0 60px #f7f6f6, 0 0 10px #0d7feb, 0 0 98px #1b1515;
+    color: #fcf9f9;
   }
 }
 
