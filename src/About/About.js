@@ -20,16 +20,16 @@ export default class About extends React.Component{
       		<div>
       			<Cards />
       			<hr />
-      			<Link to="/">
-	      			<Button className="btn btn-warning about-btn" type='submit'><h3>x</h3></Button>
-	      		</Link>
+				<Link to="/">
+					<Button className="about-btn" type='submit'><h3>x</h3></Button>
+				</Link>
 
 				<Link to="/sorting">
-	      			<Button className="btn btn-warning btn-lg sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
+	      			<Button className="sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
 	      		</Link>
 
 	      		<Link to="/pathfinding">
-	      			<Button className="btn btn-warning btn-lg path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
+	      			<Button className="path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
 	      		</Link>
 
 				<Particles className='particles' params={particlesOptions} />

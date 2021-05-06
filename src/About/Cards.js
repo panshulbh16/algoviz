@@ -12,7 +12,8 @@ class Cards extends React.Component{
 		this.state = {};
 	}
 	render(){
-		return(
+		return (
+
 			<div className="all-cards">
 				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/72337293?v=4" alt="Card image cap" />
