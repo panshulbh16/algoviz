@@ -17,11 +17,11 @@ export default class Home extends React.Component{
 			<div>
 	      		<div className="route-to">
 					<Link to="/sorting">
-		      			<Button className="btn btn-warning btn-lg sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
+		      			<Button className="sort-btn" type='submit'><h3>Visit Sorting</h3></Button>
 		      		</Link>
 
 		      		<Link to="/pathfinding">
-		      			<Button className="btn btn-warning btn-lg path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
+		      			<Button className="path-btn" type='submit'><h3>Visit Path Finding</h3></Button>
 		      		</Link>
 		      	</div>
 		      	<div>
