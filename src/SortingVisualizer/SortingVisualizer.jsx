@@ -25,7 +25,7 @@ export default class SortingVisualizer extends React.Component {
             selectedItem: algo[1].algoName,
 
             // misc
-            algoNow: "Nothing"
+            // algoNow: "Nothing"
         };
     }
 
@@ -142,14 +142,7 @@ export default class SortingVisualizer extends React.Component {
             }
         }
 
-    }
-    // buttons(){
-        
-    //     return [title, algorithmName, functionName]
-
-    // }
-
-                           
+    }                           
 
     render() {
         const { array, title, algorithmName, functionName } = this.state;
