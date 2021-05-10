@@ -9,15 +9,20 @@
     border-radius: 15px;
 }
 
-.container{
+.parent_container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.container {
     color: white;
     display: inline-flex;
-  /*align-items: space-between;*/
+    /*align-items: space-between;*/
     height: 70vh;
     width: 100%;
 }
 
-.description{
+.description {
     width: 300px;
     border: 3px solid white;
     border-radius: 15px;
@@ -33,11 +38,12 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 15px;
     border-radius: 12px;
     margin-left: 10px;
     transition-duration: 0.4s;
 }
+
     button:hover {
         background-color: purple; /* Green */
         color: white;
@@ -51,10 +57,10 @@ button {
 }
 
 
-.dropdown-container{
-  /*border: 2px solid yellow;*/
-  /*width: 200px;*/
-  /*margin: 150px 50px;*/
+.dropdown-container {
+    /*border: 2px solid yellow;*/
+    /*width: 200px;*/
+    /*margin: 150px 50px;*/
 }
 
 .algo-button {
@@ -62,67 +68,63 @@ button {
 }
 
 .select-box--container {
-  height: 30px;
-  border: 1px solid #ffffff;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+    height: 30px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
 .select-box--box {
-  margin: 150px 35px;
-  width: 200px;
-  position: relative;
-  /*left: 150px;*/
+    margin: 150px 35px;
+    width: 200px;
+    position: relative;
+    /*left: 150px;*/
 }
 
 .select-box--selected-item {
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  padding: 4px 12px;
-  vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 4px 12px;
+    vertical-align: middle;
 }
 
 .select-box--items div {
-  border-bottom: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  /*padding: 6px;*/
-  padding-left: 20px;
+    /*padding: 6px;*/
+    padding-left: 20px;
 }
 
 .select-box--arrow {
-  width: 30px;
-  height: 30px;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  background: #aaaaaa;
-  position: absolute;
-  right: 0;
-  top: 0;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    background: black;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .select-box--arrow-down {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid lightpink;
 }
 
 .select-box--arrow-up {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 10px solid red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid purple;
 }

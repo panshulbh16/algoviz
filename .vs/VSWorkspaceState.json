@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\About",
+    "\\src\\MainPage",
     "\\src\\SortingAlgorithms",
     "\\src\\SortingVisualizer"
   ],
-  "SelectedNode": "\\src\\SortingAlgorithms\\SelectionSort.js",
+  "SelectedNode": "\\src\\SortingVisualizer\\SortingVisualizer.jsx",
   "PreviewInSolutionExplorer": false
 }
