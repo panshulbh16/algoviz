@@ -1,7 +1,28 @@
 .array-container {
-    margin-top: 100px;
-    float: left;
+    width: 700px;
+    /*margin-top: 100px;*/
+    padding-top: 60px;
+    /*padding-right: 100px;*/
+    float: right;
     align-items: center;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+.container{
+    color: white;
+    display: inline-flex;
+  /*align-items: space-between;*/
+    height: 70vh;
+    width: 100%;
+}
+
+.description{
+    width: 300px;
+    border: 3px solid white;
+    border-radius: 15px;
+    margin-right: 200px;
+    /*padding-left: 100px;*/
 }
 
 button {
@@ -27,4 +48,81 @@ button {
     background-color: lightpink;
     display: inline-block;
     margin: 0 1px;
+}
+
+
+.dropdown-container{
+  /*border: 2px solid yellow;*/
+  /*width: 200px;*/
+  /*margin: 150px 50px;*/
+}
+
+.algo-button {
+    margin-top: 20px;
+}
+
+.select-box--container {
+  height: 30px;
+  border: 1px solid #ffffff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.select-box--box {
+  margin: 150px 35px;
+  width: 200px;
+  position: relative;
+  /*left: 150px;*/
+}
+
+.select-box--selected-item {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding: 4px 12px;
+  vertical-align: middle;
+}
+
+.select-box--items div {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  /*padding: 6px;*/
+  padding-left: 20px;
+}
+
+.select-box--arrow {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  background: #aaaaaa;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.select-box--arrow-down {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid red;
+}
+
+.select-box--arrow-up {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid red;
 }

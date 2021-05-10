@@ -1,21 +1,17 @@
 export const algo = [
-	{
-		"algoName": "NewArray",
-		"name": "Generate New Array",
-		"methods": "resetArray"
-	},
+
 	{	
-		"algoName": "Merge",
+		"algoName": "MergeSort",
 		"name": "MergeSort",
 		"methods": "getMergeSortAnimations" 	
 	},
 	{
-		"algoName": "Bubble",
+		"algoName": "BubbleSort",
 		"name": "BubbleSort",
 		"methods": "getBubbleSortAnimations" 
 	},
 	{
-		"algoName": "Selection",
+		"algoName": "SelectionSort",
 		"name": "SelectionSort",
 		"methods": "getSelectionSortAnimations"
 	},
