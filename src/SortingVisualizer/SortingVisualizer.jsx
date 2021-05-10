@@ -8,6 +8,7 @@ import { algo } from './allAlgorithms';
 import './SortingVisualizer.css';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import {Styles} from '../AddOns/styled.js';
 
 export default class SortingVisualizer extends React.Component {
 
@@ -24,6 +25,7 @@ export default class SortingVisualizer extends React.Component {
             items: algo || [],
             showItems: false,
             selectedItem: algo[1].algoName,
+            value:30,
 
             // misc
             // algoNow: "Nothing"
@@ -51,9 +53,9 @@ export default class SortingVisualizer extends React.Component {
     };
 
 
-    resetArray() {
+    resetArray(arraysize=30) {
         const array = [];
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < arraysize; i++) {
             array.push(randomIntFromInterval(5, 350));
         }
         this.setState({ loading: false })
@@ -150,8 +152,11 @@ export default class SortingVisualizer extends React.Component {
 
         }
         //this.setState({ loading: false }) 
+    }
 
-
+    handleOnChange = (e) => {
+        this.setState({value:e.target.value});
+        this.resetArray(this.state.value)
     }
 
     render() {
@@ -162,7 +167,11 @@ export default class SortingVisualizer extends React.Component {
             <div className="parent_container">
                 <nav className="navbar">
                     <h1>Sorting Visualizer</h1>
-                    <button onClick={() => this.resetArray()}>Generate New Array</button>
+                <Styles>
+                    <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} classname="slider" onChange={this.handleOnChange}/>
+                    <div className="value">{this.state.value}</div></div>
+                </Styles>
+                    <button onClick={() => this.resetArray(this.state.value)}>Generate New Array</button>
                 </nav>
                 <div className="container">
 
@@ -243,9 +252,9 @@ export default class SortingVisualizer extends React.Component {
                                 <div
                                     className="array-bar" key={idx}
                                     key={idx}
-                                    style={{ height: `${value}px` }}
+                                    style={{ height: `${value}px` , width: `${450/this.state.value}px`}}
                                 >
-
+                                    
                                 </div>
                             ))
                         }
