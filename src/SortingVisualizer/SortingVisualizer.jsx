@@ -183,9 +183,6 @@ export default class SortingVisualizer extends React.Component {
                     }*/}
 
                         <div className="dropdown-container">
-
-
-
                             <div className="select-box--box">
                                 <div className="select-box--container">
                                     <div className="select-box--selected-item">
@@ -202,7 +199,7 @@ export default class SortingVisualizer extends React.Component {
                                     </div>
 
                                     <div
-                                        style={{ display: this.state.showItems ? "block" : "none" }}
+                                        style={{ left:'20%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.showItems ? "block" : "none" }}
                                         className={"select-box--items"}
                                     >
                                         {algo.map(item => (
@@ -216,14 +213,16 @@ export default class SortingVisualizer extends React.Component {
                                         ))}
                                     </div>
 
-                                    {/* <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
-                                       
-                                        {loading && <i className="fa fa-refresh fs-spin"></i>}
-                                        {loading && <span> Visualizing {this.state.selectedItem}</span>}
-                                        {!loading && <span>Visualize {this.state.selectedItem} </span>}
-                                        
-                                    </button>
+                                    {/*coment
+                                    this.state.selectedItem
+                                    using an if
+                                    vary the text
                                     */}
+
+                                    <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde animi voluptas iure quas modi corporis repellendus, voluptatum neque? Veniam, doloribus repudiandae beatae nesciunt dolorum illum in assumenda reiciendis dolor alias.
+                                    </div>
+                                    
+
 
                                     <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
                                         Visualize {this.state.selectedItem}
