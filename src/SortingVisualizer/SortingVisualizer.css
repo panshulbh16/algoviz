@@ -128,3 +128,7 @@ button {
     border-right: 8px solid transparent;
     border-bottom: 10px solid purple;
 }
+
+.description{
+    font-size: 15px;
+}

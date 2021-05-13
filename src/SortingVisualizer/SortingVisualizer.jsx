@@ -19,7 +19,8 @@ export default class SortingVisualizer extends React.Component {
             title: [],
             algorithmName: [],
             functionName: [],
-
+            desc:[],
+            text: algo[1].desc,
             loading: false,
             // dropdown      
             items: algo || [],
@@ -45,13 +46,15 @@ export default class SortingVisualizer extends React.Component {
         }));
     };
 
-    selectItem = item => {
+    selectItem = (item,id) => {
+        console.log(item,id);
         this.setState({
             selectedItem: item,
             showItems: false,
+            text: algo[0].desc
+
         });
     };
-
 
     resetArray(arraysize=30) {
         const array = [];
@@ -66,17 +69,20 @@ export default class SortingVisualizer extends React.Component {
         let title = [];
         let algorithmName = [];
         let functionName = [];
+        let desc = [];
         // console.log(this.state.myobj, this.state.array);
         for (let i = 0; i < algo.length; i++) {
             title.push(algo[i]["name"]);
             algorithmName.push(algo[i]["algoName"]);
             functionName.push(algo[i]["methods"]);
+            desc.push(algo[i]["desc"]);
         }
         // console.log(title, algorithmName, functionName)
         this.setState({
             title: title,
             algorithmName: algorithmName,
             functionName: functionName,
+            desc: desc,
         });
     }
 
@@ -160,8 +166,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     render() {
-        const { array, title, algorithmName, functionName, loading } = this.state;
-
+        const { array, title, algorithmName, functionName, desc, loading } = this.state;
         console.log(array, title, algorithmName, functionName, loading);
         return (
             <div className="parent_container">
@@ -197,7 +202,6 @@ export default class SortingVisualizer extends React.Component {
                                                 }`}
                                         />
                                     </div>
-
                                     <div
                                         style={{ left:'20%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.showItems ? "block" : "none" }}
                                         className={"select-box--items"}
@@ -205,7 +209,7 @@ export default class SortingVisualizer extends React.Component {
                                         {algo.map(item => (
                                             <div
                                                 key={item.id}
-                                                onClick={() => this.selectItem(item.algoName)}
+                                                onClick={() => this.selectItem(item.algoName,item.id)/*, this.mapDesc(item.id)*/}
                                                 className={this.state.selectedItem === item ? "selected" : ""}
                                             >
                                                 {item.algoName}
@@ -213,17 +217,9 @@ export default class SortingVisualizer extends React.Component {
                                         ))}
                                     </div>
 
-                                    {/*coment
-                                    this.state.selectedItem
-                                    using an if
-                                    vary the text
-                                    */}
+                  
 
-                                    <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde animi voluptas iure quas modi corporis repellendus, voluptatum neque? Veniam, doloribus repudiandae beatae nesciunt dolorum illum in assumenda reiciendis dolor alias.
-                                    </div>
-                                    
-
-
+                                    <div id='description'>{this.state.text}</div> 
                                     <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
                                         Visualize {this.state.selectedItem}
                                     </button>
