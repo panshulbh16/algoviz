@@ -56,13 +56,6 @@ button {
     margin: 0 1px;
 }
 
-
-.dropdown-container {
-    /*border: 2px solid yellow;*/
-    /*width: 200px;*/
-    /*margin: 150px 50px;*/
-}
-
 .algo-button {
     margin-top: 20px;
 }
@@ -93,6 +86,7 @@ button {
 .select-box--items div {
     /*padding: 6px;*/
     padding-left: 20px;
+    
 }
 
 .select-box--arrow {
@@ -129,6 +123,8 @@ button {
     border-bottom: 10px solid purple;
 }
 
-.description{
+.descText {
     font-size: 15px;
+    overflow: scroll;
+    height: 120px;
 }

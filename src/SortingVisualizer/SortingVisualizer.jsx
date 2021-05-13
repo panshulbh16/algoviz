@@ -51,7 +51,7 @@ export default class SortingVisualizer extends React.Component {
         this.setState({
             selectedItem: item,
             showItems: false,
-            text: algo[0].desc
+            text: algo[id-1].desc
 
         });
     };
@@ -203,7 +203,7 @@ export default class SortingVisualizer extends React.Component {
                                         />
                                     </div>
                                     <div
-                                        style={{ left:'20%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.showItems ? "block" : "none" }}
+                                        style={{ paddingRight:"10%",left:'18%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.showItems ? "block" : "none" }}
                                         className={"select-box--items"}
                                     >
                                         {algo.map(item => (
@@ -217,9 +217,10 @@ export default class SortingVisualizer extends React.Component {
                                         ))}
                                     </div>
 
-                  
+                
+                                    <div className="descText">{this.state.text}</div> 
 
-                                    <div id='description'>{this.state.text}</div> 
+
                                     <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
                                         Visualize {this.state.selectedItem}
                                     </button>
