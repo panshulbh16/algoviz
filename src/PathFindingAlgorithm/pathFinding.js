@@ -13,7 +13,7 @@ export default class pathFinding extends React.Component{
 		return(
       		
 			<div>
-				<h2 style={{marginTop: '50vh'}}>Path finding Panding .......</h2>
+				<h2 style={{marginTop: '50vh'}}>Path finding Pending .......</h2>
 			</div>
 
 		);
