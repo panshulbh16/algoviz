@@ -27,7 +27,7 @@ class Cards extends React.Component{
 				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/46718284?v=4" alt="Card image cap" />
 				  <div className="card-body">
-				    <h5 className="card-title">Neha</h5>
+				    <h5 className="card-title">Neha Raikar</h5>
 				    <p className="card-text"></p>
 				    <a href="#" className="btn btn-primary">Github</a>
 				  </div>
@@ -36,7 +36,7 @@ class Cards extends React.Component{
 				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/40309513?v=4" alt="Card image cap" />
 				  <div className="card-body">
-				    <h5 className="card-title">Panshul</h5>
+				    <h5 className="card-title">Panshul Bharadwaj</h5>
 				    <p className="card-text"></p>
 				    <a href="#" className="btn btn-primary">Github</a>
 				  </div>
@@ -44,7 +44,7 @@ class Cards extends React.Component{
 				<div className="card" style={{width: '12rem'}}>
 				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/69101765?v=4" alt="Card image cap" />
 				  <div className="card-body">
-				    <h5 className="card-title">Parakh</h5>
+				    <h5 className="card-title">Parakh Chaudhary</h5>
 				    <p className="card-text"></p>
 				    <a href="#" className="btn btn-primary">Github</a>
 				  </div>
