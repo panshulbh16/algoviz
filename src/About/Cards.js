@@ -29,6 +29,7 @@ class Cards extends React.Component{
 				  <div className="card-body">
 				    <h5 className="card-title">Neha Raikar</h5>
 				    <p className="card-text"></p>
+					<br></br>
 				    <a href="#" className="btn btn-primary">Github</a>
 				  </div>
 				</div>

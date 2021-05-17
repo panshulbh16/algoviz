@@ -178,7 +178,7 @@ export default class SortingVisualizer extends React.Component {
 
     handleOnChange = (e) => {
         this.setState({value:e.target.value});
-        // this.resetArray(this.state.value)
+         this.resetArray(this.state.value)
     }
 
     render() {
@@ -189,7 +189,7 @@ export default class SortingVisualizer extends React.Component {
                 <nav className="navbar">
                     <h1>Sorting Visualizer</h1>
                 <Styles>
-                    <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} className="slider" onChange={() => this.handleOnChange()}/>
+                    <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} className="slider" onChange={this.handleOnChange}/>
                     <div className="value">{this.state.value}</div></div>
                 </Styles>
                     <button onClick={() => this.resetArray(this.state.value)}>Generate New Array</button>
