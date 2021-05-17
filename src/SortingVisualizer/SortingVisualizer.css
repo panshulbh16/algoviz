@@ -50,9 +50,10 @@ button {
     }
 
 .array-bar {
-    width: 15px;
+    width: 55px;
     background-color: lightpink;
     display: inline-block;
+    /*flex-direction: column-reverse;*/
     margin: 0 1px;
 }
 

@@ -42,7 +42,7 @@ class Cards extends React.Component{
 				  </div>
 				</div>
 				<div className="card" style={{width: '12rem'}}>
-				  <img className="card-img-top" src="..." alt="Card image cap" />
+				  <img className="card-img-top" src="https://avatars.githubusercontent.com/u/69101765?v=4" alt="Card image cap" />
 				  <div className="card-body">
 				    <h5 className="card-title">Parakh</h5>
 				    <p className="card-text"></p>
