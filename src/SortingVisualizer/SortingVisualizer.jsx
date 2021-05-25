@@ -86,33 +86,7 @@ export default class SortingVisualizer extends React.Component {
         });
     }
 
-    // getAnimationArray(animations, functionName){
-    //     // var hackerAll = functionName;
-    //     // var fn_string = hackerAll.toString()
-    //     // console.log("hello", fn_string);
-    //     // var back_to_fn = new Function(`return ${fn_string}`)()
 
-    //     switch(functionName){
-    //         case "getMergeSortAnimations": 
-    //             animations = getMergeSortAnimations(this.state.array);
-    //             break;
-    //         case "getBubbleSortAnimations": 
-    //             animations = getBubbleSortAnimations(this.state.array);
-    //             break;
-    //         case "getSelectionSortAnimations": 
-    //             animations = getSelectionSortAnimations(this.state.array);
-    //             break;
-    //         case "resetArray": 
-    //             animations = this.resetArray();
-    //             break;
-    //         default: 
-    //         console.log(functionName)
-
-    //             console.log("Sorry, issues are there");
-    //             break;
-    //     }
-    //     return animations;
-    // }
 
     sort(sortingTechnique, functionName) {
 
@@ -131,10 +105,13 @@ export default class SortingVisualizer extends React.Component {
             animations = getSelectionSortAnimations(this.state.array);
 
         // animations = this.getAnimationArray(animations, functionName);
-        this.setState({ loading: true })
+       /*
+        *this.setState({ loading: true })
         setTimeout(() => {
             this.setState({ loading: false })
         }, animations.length * 10);
+        */
+
         // else --> call your algo function ;)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -143,6 +120,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIdx, barTwoIdx] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
+
                 const color = i % 3 === 0 ? 'purple' : 'lightpink';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;

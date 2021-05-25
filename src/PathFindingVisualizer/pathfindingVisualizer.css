@@ -1,0 +1,146 @@
+.node-container {
+    width: 700px;
+    height: 75vh;
+    /*margin-top: 100px;*/
+    /*padding-top: 20px;*/
+    /*padding-right: 100px;*/
+    float: right;
+    align-items: center;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+.parent_container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.container {
+    color: white;
+    display: inline-flex;
+    /*align-items: space-between;*/
+   
+    width: 100%;
+}
+
+.description {
+    width: 300px;
+    height: 75vh;
+    border: 3px solid white;
+    border-radius: 15px;
+    margin-right: 200px;
+    /*padding-left: 100px;*/
+}
+
+
+
+.array-bar {
+    width: 15px;
+    background-color: lightpink;
+    display: inline-block;
+    margin: 0 1px;
+}
+
+
+.dropdown-container {
+    /*border: 2px solid yellow;*/
+    /*width: 200px;*/
+    /*margin: 150px 50px;*/
+}
+
+.algo-button {
+    margin-top: 20px;
+}
+
+.select-box--container {
+    height: 30px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.select-box--box {
+    margin: 150px 35px;
+    width: 200px;
+    position: relative;
+    /*left: 150px;*/
+}
+
+.select-box--selected-item {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 4px 12px;
+    vertical-align: middle;
+}
+
+.select-box--items div {
+    /*padding: 6px;*/
+    padding-left: 20px;
+}
+
+.select-box--arrow {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    background: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.select-box--arrow-down {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid lightpink;
+}
+
+.select-box--arrow-up {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid purple;
+}
+
+
+
+.grid {
+    font-size: 0;
+    pointer-events: unset;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-10%, 0%);
+    
+}
+
+.grid-visualizing {
+    font-size: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-10%, 0%);
+}
+
+.particles {
+    background: black; /* fallback for old browsers */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}

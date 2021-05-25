@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './MainPage/Home';
 import About from './About/About';
-import pathFinding from './PathFindingAlgorithm/pathFinding';
+import pathFinding from './PathFindingVisualizer/pathfindingVisualizer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
 import {particlesOptions} from './AddOns/constants';
