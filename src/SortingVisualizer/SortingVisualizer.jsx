@@ -21,7 +21,7 @@ export default class SortingVisualizer extends React.Component {
             functionName: [],
             desc:[],
             text: algo[1].desc,
-            loading: false,
+            // loading: false,
             // dropdown      
             items: algo || [],
             showItems: false,
@@ -47,7 +47,7 @@ export default class SortingVisualizer extends React.Component {
     };
 
     selectItem = (item,id) => {
-        console.log(item,id);
+        // console.log(item,id);
         this.setState({
             selectedItem: item,
             showItems: false,
@@ -89,20 +89,24 @@ export default class SortingVisualizer extends React.Component {
 
 
     sort(sortingTechnique, functionName) {
-
-        console.log("loading state sort", this.state.loading)
         let animations = [];
-        console.log("Hello", sortingTechnique, functionName)
 
         if (sortingTechnique === "NewArray") {
             this.resetArray();
         }
-        else if (sortingTechnique === "MergeSort")
+        else if (sortingTechnique === "MergeSort"){
             animations = getMergeSortAnimations(this.state.array);
-        else if (sortingTechnique === "BubbleSort")
+            // setTimeout(function(){ alert("After 5 seconds!"); }, 5000);
+            console.log(this.state.array, animations);
+        }
+        else if (sortingTechnique === "BubbleSort"){
             animations = getBubbleSortAnimations(this.state.array);
-        else if (sortingTechnique === "SelectionSort")
+            console.log(animations);
+        }
+        else if (sortingTechnique === "SelectionSort"){
             animations = getSelectionSortAnimations(this.state.array);
+            console.log(animations);
+        }
 
         // animations = this.getAnimationArray(animations, functionName);
        /*
@@ -133,38 +137,44 @@ export default class SortingVisualizer extends React.Component {
                     barOneStyle.height = `${newHeight}px`;
                 }, i * 10);
             }
+            // this.setState({ loading: false }) 
+        // }}, 10);
+}
+        
+        //         this.resetArray()
+        
+                // setTimeout(() => {
+            // this.setState({ loading: false })
+        // }, animations.length * 10);
 
-        }
-        //this.setState({ loading: false }) 
+        
     }
+
+
+    // runAnimation(sortingTechnique, functionName){
+
+    // }
 
     handleOnChange = (e) => {
         this.setState({value:e.target.value});
-        this.resetArray(this.state.value)
+         this.resetArray(this.state.value)
     }
 
     render() {
         const { array, title, algorithmName, functionName, desc, loading } = this.state;
-        console.log(array, title, algorithmName, functionName, loading);
+        // console.log(array, title, algorithmName, functionName, loading);
         return (
             <div className="parent_container">
                 <nav className="navbar">
                     <h1>Sorting Visualizer</h1>
                 <Styles>
-                    <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} classname="slider" onChange={this.handleOnChange}/>
+                    <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} className="slider" onChange={this.handleOnChange}/>
                     <div className="value">{this.state.value}</div></div>
                 </Styles>
                     <button onClick={() => this.resetArray(this.state.value)}>Generate New Array</button>
                 </nav>
                 <div className="container">
-
                     <div className="description">
-                        {/*{
-                        title.map((value, idx) => (
-                            <button onClick={this.sort.bind(this, algorithmName[idx], functionName[idx])}>{value}</button>
-                        ))
-                    }*/}
-
                         <div className="dropdown-container">
                             <div className="select-box--box">
                                 <div className="select-box--container">
@@ -202,14 +212,14 @@ export default class SortingVisualizer extends React.Component {
                                     <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
                                         Visualize {this.state.selectedItem}
                                     </button>
-                                    {console.log("loading state", this.state.loading)}
-                                    <Loader type="Rings"
+                                    {/*console.log("loading state", this.state.loading)*/}
+                                {/*    <Loader type="Rings"
                                         color='lightpink'
                                         height={100}
                                         width={100}
-                                        visible={this.state.loading}> </Loader>
+                                        visible={this.state.loading}> </Loader>*/}
 
-                                    {console.log("loading state", this.state.loading)}
+                                    {/*console.log("loading state", this.state.loading)*/}
 
 
                                 </div>

@@ -1,6 +1,6 @@
 export const algo = [
 
-	{	
+	{
 		"id": 1,
 		"algoName": "MergeSort",
 		"name": "MergeSort",
