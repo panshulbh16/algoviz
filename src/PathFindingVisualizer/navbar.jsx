@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./navbar.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/js/dist/dropdown";
+import "./navbar.css";
 
 const brand = window.innerWidth > 600 ? "Pathfinding Visualizer" : "Pathfinder";
 
@@ -119,12 +119,14 @@ class NavBar extends Component {
             <li className="nav-item dropdown">
               <div className="dropdown">
                 <button
-                  className="btn btn-light dropdown-toggle"
+                  className="btn btn-light dropdown-toggle btncoral"
+        
                   type="button"
                   id="dropdownMenu1"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  
 
                 >
                     Algorithm 
