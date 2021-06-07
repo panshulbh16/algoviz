@@ -31,7 +31,7 @@ import {
 } from "../pathfindingAlgorithms/bidirectionalGreedySearch";
 
 
-const initialNum = getInitialNum(500,360);
+const initialNum = getInitialNum(500,350);
 const initialNumRows = initialNum[0];
 const initialNumColumns = initialNum[1];
 
@@ -373,6 +373,8 @@ class PathfindingVisualizer extends Component {
 
                 <div className="description">
                     {/*{
+                     * 
+                     * 
                         title.map((value, idx) => (
                             <button onClick={this.sort.bind(this, algorithmName[idx], functionName[idx])}>{value}</button>
                         ))

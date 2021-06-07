@@ -9,7 +9,6 @@ class NavBar extends Component {
   state = {
     algorithm: "Visualize Algorithm",
     pathState: false,
-    mazeState: false,
     speedState: "Speed",
   };
 
@@ -63,19 +62,18 @@ class NavBar extends Component {
   }
 
   clearGrid() {
-    if (this.props.visualizingAlgorithm || this.props.generatingMaze) {
+    if (this.props.visualizingAlgorithm ) {
       return;
     }
     this.props.clearGrid();
     this.setState({
       algorithm: "Visualize Algorithm",
       pathState: false,
-      mazeState: false,
     });
   }
 
   clearPath() {
-    if (this.props.visualizingAlgorithm || this.props.generatingMaze) {
+    if (this.props.visualizingAlgorithm ) {
       return;
     }
     this.props.clearPath();
@@ -86,7 +84,7 @@ class NavBar extends Component {
   }
 
   clearTemp() {
-    if (this.props.visualizingAlgorithm || this.props.generatingMaze) {
+    if (this.props.visualizingAlgorithm ) {
       return;
     }
     this.props.clearGrid();
