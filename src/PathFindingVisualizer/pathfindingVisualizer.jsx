@@ -49,6 +49,8 @@ class PathfindingVisualizer extends Component {
       pathState: false,
       speedState: "Speed",
       text: algo[0].desc,
+      pathFindingShowItems: false,
+      speedShowItems: false,
   };
 
   updateDimensions = () => {
@@ -85,10 +87,17 @@ class PathfindingVisualizer extends Component {
   }
 
 
-    dropDown = () => {
+    dropDown = (dropDownName) => {
+      if (dropDownName === "pathFinding"){
         this.setState(prevState => ({
-            showItems: !prevState.showItems
+            pathFindingShowItems: !prevState.pathFindingShowItems
         }));
+      }
+      else{
+        this.setState(prevState => ({
+            speedShowItems: !prevState.speedShowItems
+        }));
+      }
     };
 
     selectItem = (algo,item, id,text) => {
@@ -96,7 +105,7 @@ class PathfindingVisualizer extends Component {
         this.setState({
             selectedalgo:algo,
             selectedItem: item,
-            showItems: false,
+            pathFindingShowItems: false,
             text: text
 
         });
@@ -288,16 +297,16 @@ class PathfindingVisualizer extends Component {
                                 {this.state.selectedItem}
                                 {/*{console.log(this.state.selectedItem.value)}*/}
                             </div>
-                            <div className="select-box--arrow" onClick={this.dropDown}>
+                            <div className="select-box--arrow" onClick={() => this.dropDown("pathFinding")}>
                                 <span
-                                    className={`${this.state.showItems
+                                    className={`${this.state.pathFindingShowItems
                                         ? "select-box--arrow-up"
                                         : "select-box--arrow-down"
                                         }`}
                                 />
                             </div>
                             <div
-                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.pathFindingShowItems ? "block" : "none" }}
                                 className={"select-box--items"}
                             >
                                 {algo.map(item => (
@@ -324,14 +333,14 @@ class PathfindingVisualizer extends Component {
                             </div>
                             <div className="select-box--arrow" onClick={this.dropDown}>
                                 <span
-                                    className={`${this.state.speedState!=="Speed"
+                                    className={`${this.state.speedShowItems
                                         ? "select-box--arrow-up"
                                         : "select-box--arrow-down"
                                         }`}
                                 />
                             </div>
                             <div
-                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.speedShowItems ? "block" : "none" }}
                                 className={"select-box--items"}
                             >
                                 <button
