@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./pathfindingVisualizer.css";
 import Node from "./Node/node";
-import NavBar from "./navbar";
 import { particlesOptions } from '../AddOns/constants';
 import Particles from 'react-particles-js';
+import { algo } from './allAlgorithms_pathfinding';
 //Pathfinding Algorithms
 import {
   dijkstra,
@@ -21,14 +21,6 @@ import {
   depthFirstSearch,
   getNodesInShortestPathOrderDFS,
 } from "../pathfindingAlgorithms/depthFirstSearch";
-import {
-  greedyBFS,
-  getNodesInShortestPathOrderGreedyBFS,
-} from "../pathfindingAlgorithms/greedyBestFirstSearch";
-import {
-  bidirectionalGreedySearch,
-  getNodesInShortestPathOrderBidirectionalGreedySearch,
-} from "../pathfindingAlgorithms/bidirectionalGreedySearch";
 
 
 const initialNum = getInitialNum(500,350);
@@ -50,7 +42,13 @@ class PathfindingVisualizer extends Component {
     height: window.innerHeight,
     numRows: initialNumRows,
     numColumns: initialNumColumns,
-    speed: 10,
+      speed: 10,
+      items: algo || [],
+      selectedalgo: algo[0].algoName,
+      selectedItem: algo[0].name,
+      pathState: false,
+      speedState: "Speed",
+      text: algo[0].desc,
   };
 
   updateDimensions = () => {
@@ -86,6 +84,39 @@ class PathfindingVisualizer extends Component {
     this.setState({ mouseIsPressed: false });
   }
 
+
+    dropDown = () => {
+        this.setState(prevState => ({
+            showItems: !prevState.showItems
+        }));
+    };
+
+    selectItem = (algo,item, id,text) => {
+        // console.log(item,id);
+        this.setState({
+            selectedalgo:algo,
+            selectedItem: item,
+            showItems: false,
+            text: text
+
+        });
+    };
+
+   
+
+    changeSpeed(speed) {
+        if (this.state.visualizingAlgorithm) {
+            return;
+        }
+        let value = [10, 10];
+        if (speed === "Slow") value = [50, 30];
+        else if (speed === "Medium") value = [25, 20];
+        else if (speed === "Fast") value = [10, 10];
+        this.setState({ speedState: speed });
+        this.updateSpeed(value[0], value[1]);
+   
+    }
+
   clearGrid() {
     if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
       return;
@@ -110,7 +141,7 @@ class PathfindingVisualizer extends Component {
   }
 
   clearPath() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
+    if (this.state.visualizingAlgorithm ) {
       return;
     }
     for (let row = 0; row < this.state.grid.length; row++) {
@@ -187,198 +218,165 @@ class PathfindingVisualizer extends Component {
   };
 
 
-  animateBidirectionalAlgorithm(
-    visitedNodesInOrderStart,
-    visitedNodesInOrderFinish,
-    nodesInShortestPathOrder,
-    isShortedPath
-  ) {
-    let len = Math.max(
-      visitedNodesInOrderStart.length,
-      visitedNodesInOrderFinish.length
-    );
-    for (let i = 1; i <= len; i++) {
-      let nodeA = visitedNodesInOrderStart[i];
-      let nodeB = visitedNodesInOrderFinish[i];
-      if (i === visitedNodesInOrderStart.length) {
+
+
+    visualizeAlgo(algoname) {
+        if (this.state.visualizingAlgorithm) {
+            return;
+        }
+        if (algoname === "Visualize Algorithm" || algoname === "Select an Algorithm!") {
+            this.setState({ selectedalgo: "Select an Algorithm!" });
+            return;
+        }
+        this.setState({ visualizingAlgorithm: true });
         setTimeout(() => {
-          let visitedNodesInOrder = getVisitedNodesInOrder(
-            visitedNodesInOrderStart,
-            visitedNodesInOrderFinish
-          );
-          if (isShortedPath) {
-            this.animateShortestPath(
-              nodesInShortestPathOrder,
-              visitedNodesInOrder
-            );
-          } else {
-            this.setState({ visualizingAlgorithm: false });
-          }
-        }, i * this.state.speed);
-        return;
-      }
-      setTimeout(() => {
-        //visited nodes
-        if (nodeA !== undefined)
-          document.getElementById(`node-${nodeA.row}-${nodeA.col}`).className =
-            "node node-visited";
-        if (nodeB !== undefined)
-          document.getElementById(`node-${nodeB.row}-${nodeB.col}`).className =
-            "node node-visited";
-      }, i * this.state.speed);
+            const { grid } = this.state;
+            const startNode = grid[startNodeRow][startNodeCol];
+            const finishNode = grid[finishNodeRow][finishNodeCol];
+            let visitedNodesInOrder, nodesInShortestPathOrder;
+            
+            if (algoname === "Visualize Dijkstra") {
+                visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+                nodesInShortestPathOrder = getNodesInShortestPathOrderDijkstra(
+                    finishNode
+                );
+
+            }
+            else if (algoname === "Visualize AStar") {
+                visitedNodesInOrder = astar(grid, startNode, finishNode);
+                nodesInShortestPathOrder = getNodesInShortestPathOrderAstar(
+                    finishNode
+                );
+            }
+            else if (algoname === "Visualize BFS") {
+                visitedNodesInOrder = breadthFirstSearch(
+                    grid,
+                    startNode,
+                    finishNode
+                );
+                nodesInShortestPathOrder = getNodesInShortestPathOrderBFS(
+                    finishNode
+                );
+            }
+            else { //DFS
+                visitedNodesInOrder = depthFirstSearch(grid, startNode, finishNode);
+                nodesInShortestPathOrder = getNodesInShortestPathOrderDFS(
+                    finishNode
+                );
+
+            }
+           this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
+        }, this.state.speed);
     }
-  }
-
-  visualizeDijkstra() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderDijkstra(
-        finishNode
-      );
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
-    }, this.state.speed);
-  }
-
-  visualizeAStar() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = astar(grid, startNode, finishNode);
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderAstar(
-        finishNode
-      );
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
-    }, this.state.speed);
-  }
-
-  visualizeBFS() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = breadthFirstSearch(
-        grid,
-        startNode,
-        finishNode
-      );
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderBFS(
-        finishNode
-      );
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
-    }, this.state.speed);
-  }
-
-  visualizeDFS() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = depthFirstSearch(grid, startNode, finishNode);
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderDFS(
-        finishNode
-      );
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
-    }, this.state.speed);
-  }
 
 
-  visualizeGreedyBFS() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = greedyBFS(grid, startNode, finishNode);
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderGreedyBFS(
-        finishNode
-      );
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
-    }, this.state.speed);
-  }
 
-  visualizeBidirectionalGreedySearch() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
-      return;
-    }
-    this.setState({ visualizingAlgorithm: true });
-    setTimeout(() => {
-      const { grid } = this.state;
-      const startNode = grid[startNodeRow][startNodeCol];
-      const finishNode = grid[finishNodeRow][finishNodeCol];
-      const visitedNodesInOrder = bidirectionalGreedySearch(
-        grid,
-        startNode,
-        finishNode
-      );
-      const visitedNodesInOrderStart = visitedNodesInOrder[0];
-      const visitedNodesInOrderFinish = visitedNodesInOrder[1];
-      const isShortedPath = visitedNodesInOrder[2];
-      const nodesInShortestPathOrder = getNodesInShortestPathOrderBidirectionalGreedySearch(
-        visitedNodesInOrderStart[visitedNodesInOrderStart.length - 1],
-        visitedNodesInOrderFinish[visitedNodesInOrderFinish.length - 1]
-      );
-      this.animateBidirectionalAlgorithm(
-        visitedNodesInOrderStart,
-        visitedNodesInOrderFinish,
-        nodesInShortestPathOrder,
-        isShortedPath
-      );
-    }, this.state.speed);
-  }
 
-  
 
   render() {
     let { grid } = this.state;
     return (
         <div className="parent_container">
-        <NavBar
-          visualizingAlgorithm={this.state.visualizingAlgorithm}
-          visualizeDijkstra={this.visualizeDijkstra.bind(this)}
-          visualizeAStar={this.visualizeAStar.bind(this)}
-          visualizeGreedyBFS={this.visualizeGreedyBFS.bind(this)}
-          visualizeBidirectionalGreedySearch={this.visualizeBidirectionalGreedySearch.bind(
-            this
-          )}
-          visualizeBFS={this.visualizeBFS.bind(this)}
-          visualizeDFS={this.visualizeDFS.bind(this)}
-          clearGrid={this.clearGrid.bind(this)}
-          clearPath={this.clearPath.bind(this)}
-          updateSpeed={this.updateSpeed.bind(this)}
-            />
+            
+ 
+
+            <nav className="navbar">
+                <h1>Pathfinding Visualizer</h1>
+                <div className="dropdown-container">
+                    <div className="select-box--box">
+                        <div className="select-box--container">
+                            <div className="select-box--selected-item">
+                                {this.state.selectedItem}
+                                {/*{console.log(this.state.selectedItem.value)}*/}
+                            </div>
+                            <div className="select-box--arrow" onClick={this.dropDown}>
+                                <span
+                                    className={`${this.state.showItems
+                                        ? "select-box--arrow-up"
+                                        : "select-box--arrow-down"
+                                        }`}
+                                />
+                            </div>
+                            <div
+                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                className={"select-box--items"}
+                            >
+                                {algo.map(item => (
+                                    <button
+                                        key={item.id}
+                                        className="button_dropdown"
+                                        type="button"
+                                        onClick={() => this.selectItem(item.algoName, item.name, item.id, item.desc)/*, this.mapDesc(item.id)*/}
+                                       // className={this.state.selectedItem === item ? "selected" : ""}
+                                    >
+                                        {item.name}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="dropdown-container">
+                    <div className="select-box--box">
+                        <div className="select-box--container">
+                            <div className="select-box--selected-item">
+                                {this.state.speedState}
+                                {/*{console.log(this.state.selectedItem.value)}*/}
+                            </div>
+                            <div className="select-box--arrow" onClick={this.dropDown}>
+                                <span
+                                    className={`${this.state.speedState!=="Speed"
+                                        ? "select-box--arrow-up"
+                                        : "select-box--arrow-down"
+                                        }`}
+                                />
+                            </div>
+                            <div
+                                style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                className={"select-box--items"}
+                            >
+                                <button
+                                    className="button_dropdown"
+                                    type="button"
+                                    onClick={() => this.changeSpeed("Slow")}
+                                >
+                                    Slow
+                                </button>
+                                <button
+                                    className="button_dropdown"
+                                    type="button"
+                                    onClick={() => this.changeSpeed("Medium")}
+                                >
+                                    Medium
+                               </button>
+                                <button
+                                    className="button_dropdown"
+                                    type="button"
+                                    onClick={() => this.changeSpeed("Fast")}
+                                >
+                                    Fast
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button className="algo-button" onClick={() => this.visualizeAlgo(this.state.selectedalgo)}>
+                    {this.state.selectedalgo}
+                </button>
+                <button
+                    className="algo-button"
+                    onClick={() => this.clearGrid()}
+                >
+                    Clear Gird
+              </button>
+            </nav>
+
             <div className="container">
 
                 <div className="description">
-                    {/*{
-                     * 
-                     * 
-                        title.map((value, idx) => (
-                            <button onClick={this.sort.bind(this, algorithmName[idx], functionName[idx])}>{value}</button>
-                        ))
-                    }*/}
+                    {
+                        <div className="desc_text">{this.state.text}</div> 
+                    }
 
                     
 
@@ -386,7 +384,7 @@ class PathfindingVisualizer extends Component {
         
         <div
           className={
-            this.state.visualizingAlgorithm || this.state.generatingMaze
+            this.state.visualizingAlgorithm 
               ? "grid-visualizing"
               : "grid"
           }
@@ -601,25 +599,7 @@ const updateNodesForRender = (
   }
 };
 
-const getVisitedNodesInOrder = (
-  visitedNodesInOrderStart,
-  visitedNodesInOrderFinish
-) => {
-  let visitedNodesInOrder = [];
-  let n = Math.max(
-    visitedNodesInOrderStart.length,
-    visitedNodesInOrderFinish.length
-  );
-  for (let i = 0; i < n; i++) {
-    if (visitedNodesInOrderStart[i] !== undefined) {
-      visitedNodesInOrder.push(visitedNodesInOrderStart[i]);
-    }
-    if (visitedNodesInOrderFinish[i] !== undefined) {
-      visitedNodesInOrder.push(visitedNodesInOrderFinish[i]);
-    }
-  }
-  return visitedNodesInOrder;
-};
+
 
 export default PathfindingVisualizer;
 

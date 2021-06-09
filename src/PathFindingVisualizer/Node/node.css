@@ -21,14 +21,14 @@
 
 .node-start {
     border-radius: 5px;
-    background-color: deepskyblue;
-    border: 1px solid skyblue;
+    background-color: indianred;
+    border: 1px solid indianred;
 }
 
 .node-finish {
     border-radius: 5px;
-    background-color: mediumblue ;
-    border: 1px solid mediumblue;
+    background-color: mediumpurple;
+    border: 1px solid mediumpurple;
 }
 
 .node-finish-reached {
@@ -107,55 +107,59 @@
 @keyframes visitedAnimation {
     0% {
         transform: scale(0.3);
-        background-color: darkblue;
-        border: 1px solid darkblue;
+        background-color: crimson;
+        border: 1px solid crimson;
         border-radius: 100%;
     }
 
     50% {
         transform: scale(0.5);
-        background-color: dodgerblue;
-        border: 1px solid dodgerblue;
+        background-color: indianred;
+        border: 1px solid indianred;
         border-radius: 75%;
     }
 
     75% {
         transform: scale(0.7);
-        background-color: deepskyblue;
-        border: 1px solid deepskyblue;
+        background-color: lightcoral;
+        border: 1px solid lightcoral;
         border-radius: 50%;
     }
 
     100% {
         transform: scale(1);
-        background-color: lightblue;
-        border: 1px solid lightblue;
+        background-color: lightpink;
+        border: 1px solid lightpink;
     }
 }
 
 @keyframes shortestPathAnimation {
-  0% {
-    transform: scale(0.3);
-    background-color: lightblue;
-    border-radius: 100%;
-  }
+    0% {
+        transform: scale(0.3);
+        background-color: lavender;
+        border: 1px solid lavender;
+        border-radius: 100%;
+    }
 
-  50% {
-    transform: scale(0.5);
-    background-color: deepskyblue;
-    border-radius: 75%;
-  }
+    50% {
+        transform: scale(0.5);
+        background-color: rebeccapurple;
+        border: 1px solid rebeccapurple;
+        border-radius: 75%;
+    }
 
-  75% {
-    transform: scale(0.7);
-    background-color: dodgerblue;
-    border-radius: 50%;
-  }
+    75% {
+        transform: scale(0.7);
+        background-color: rebeccapurple;
+        border: 1px solid rebeccapurple;
+        border-radius: 50%;
+    }
 
-  100% {
-    transform: scale(1);
-    background-color: royalblue;
-  }
+    100% {
+        transform: scale(1);
+        background-color: purple;
+        border: 1px solid purple;
+    }
 }
 
 @keyframes finishVisitedAnimation {

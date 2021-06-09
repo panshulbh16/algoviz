@@ -4,7 +4,7 @@ import Particles from 'react-particles-js';
 import { getMergeSortAnimations } from '../SortingAlgorithms/MergeSort.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/BubbleSort.js';
 import { getSelectionSortAnimations } from '../SortingAlgorithms/SelectionSort';
-import { algo } from './allAlgorithms';
+import { algo } from './allAlgorithms_sorting';
 import './SortingVisualizer.css';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -20,14 +20,16 @@ export default class SortingVisualizer extends React.Component {
             algorithmName: [],
             functionName: [],
             desc:[],
-            text: algo[1].desc,
+            text: algo[0].desc,
             // loading: false,
             // dropdown      
-            items: algo || [],
+            item: algo || [],
             showItems: false,
-            selectedItem: algo[1].algoName,
-            value:30,
-
+            selectedalgo: algo[0].algoName,
+            selectedItem: algo[0].name,
+            value: 30,
+            speed: 10,
+            speedState: "Speed",
             // misc
             // algoNow: "Nothing"
         };
@@ -38,7 +40,16 @@ export default class SortingVisualizer extends React.Component {
         this.modifyState();
     }
 
+    changeSpeed(speed) {
+        let value = 20
+        if (speed === "Slow") value = 30;
+        else if (speed === "Medium") value = 20;
+        else if (speed === "Fast") value = 10;
 
+        this.setState({ speedState: speed });
+        this.setState({ speed: value });
+
+    }
 
     dropDown = () => {
         this.setState(prevState => ({
@@ -46,15 +57,17 @@ export default class SortingVisualizer extends React.Component {
         }));
     };
 
-    selectItem = (item,id) => {
-        // console.log(item,id);
+    selectItem = (algo,item,id,text) => {
+         console.log(item,id,text);
         this.setState({
+            selectedalgo: algo,
             selectedItem: item,
             showItems: false,
-            text: algo[id-1].desc
+            text: text,
 
         });
     };
+
 
     resetArray(arraysize=30) {
         const array = [];
@@ -68,42 +81,43 @@ export default class SortingVisualizer extends React.Component {
     modifyState() {
         let title = [];
         let algorithmName = [];
-        let functionName = [];
         let desc = [];
         // console.log(this.state.myobj, this.state.array);
         for (let i = 0; i < algo.length; i++) {
             title.push(algo[i]["name"]);
             algorithmName.push(algo[i]["algoName"]);
-            functionName.push(algo[i]["methods"]);
             desc.push(algo[i]["desc"]);
         }
-        // console.log(title, algorithmName, functionName)
+        // console.log(title, algorithmName)
         this.setState({
             title: title,
             algorithmName: algorithmName,
-            functionName: functionName,
             desc: desc,
         });
     }
 
 
 
-    sort(sortingTechnique, functionName) {
+    sort(sortingTechnique) {
         let animations = [];
 
         if (sortingTechnique === "NewArray") {
             this.resetArray();
         }
-        else if (sortingTechnique === "MergeSort"){
+        else if (sortingTechnique === "Visualize Algorithm" || sortingTechnique === "Select an Algorithm!") {
+            this.setState({ selectedalgo: "Select an Algorithm!" });
+            return;
+        }
+        else if (sortingTechnique === "Visualize MergeSort"){
             animations = getMergeSortAnimations(this.state.array);
             // setTimeout(function(){ alert("After 5 seconds!"); }, 5000);
             console.log(this.state.array, animations);
         }
-        else if (sortingTechnique === "BubbleSort"){
+        else if (sortingTechnique === "Visualize BubbleSort"){
             animations = getBubbleSortAnimations(this.state.array);
             console.log(animations);
         }
-        else if (sortingTechnique === "SelectionSort"){
+        else if (sortingTechnique === "Visualize SelectionSort"){
             animations = getSelectionSortAnimations(this.state.array);
             console.log(animations);
         }
@@ -129,13 +143,13 @@ export default class SortingVisualizer extends React.Component {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 10);
+                }, i * this.state.speed);
             } else {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-                }, i * 10);
+                }, i * this.state.speed);
             }
             // this.setState({ loading: false }) 
         // }}, 10);
@@ -170,8 +184,58 @@ export default class SortingVisualizer extends React.Component {
                 <Styles>
                     <div className="slider"> <input type="range" min={10} max={70} value={this.state.value} className="slider" onChange={this.handleOnChange}/>
                     <div className="value">{this.state.value}</div></div>
-                </Styles>
+                    </Styles>
+                    <button  onClick={() => this.sort(this.state.selectedalgo)}>
+                        {this.state.selectedalgo}
+                    </button>
+
                     <button onClick={() => this.resetArray(this.state.value)}>Generate New Array</button>
+                    
+                    <div className="dropdown-container">
+                        <div className="select-box--box">
+                            <div className="select-box--container">
+                                <div className="select-box--selected-item">
+                                    {this.state.speedState}
+                                    {/*{console.log(this.state.selectedItem.value)}*/}
+                                </div>
+                                <div className="select-box--arrow" onClick={this.dropDown}>
+                                    <span
+                                        className={`${this.state.speedState !== "Speed"
+                                            ? "select-box--arrow-up"
+                                            : "select-box--arrow-down"
+                                            }`}
+                                    />
+                                </div>
+                                <div
+                                    style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                    className={"select-box--items"}
+                                >
+                                    <button
+                                        className="button_dropdown"
+                                        type="button"
+                                        onClick={() => this.changeSpeed("Slow")}
+                                    >
+                                        Slow
+                   </button>
+                                    <button
+                                        className="button_dropdown"
+                                        type="button"
+                                        onClick={() => this.changeSpeed("Medium")}
+                                    >
+                                        Medium
+                  </button>
+                                    <button
+                                        className="button_dropdown"
+                                        type="button"
+                                        onClick={() => this.changeSpeed("Fast")}
+                                    >
+                                        Fast
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </nav>
                 <div className="container">
                     <div className="description">
@@ -195,13 +259,15 @@ export default class SortingVisualizer extends React.Component {
                                         className={"select-box--items"}
                                     >
                                         {algo.map(item => (
-                                            <div
+                                            <button
                                                 key={item.id}
-                                                onClick={() => this.selectItem(item.algoName,item.id)/*, this.mapDesc(item.id)*/}
-                                                className={this.state.selectedItem === item ? "selected" : ""}
+                                                className="button_dropdown"
+                                                type="button"
+                                                onClick={() => this.selectItem(item.algoName, item.name ,item.id,item.desc)/*, this.mapDesc(item.id)*/}
+                                               // className={this.state.selectedItem === item ? "selected" : ""}
                                             >
-                                                {item.algoName}
-                                            </div>
+                                                {item.name}
+                                            </button>
                                         ))}
                                     </div>
 
@@ -209,9 +275,7 @@ export default class SortingVisualizer extends React.Component {
                                     <div className="descText">{this.state.text}</div> 
 
 
-                                    <button className="algo-button" onClick={() => this.sort(this.state.selectedItem)}>
-                                        Visualize {this.state.selectedItem}
-                                    </button>
+                                    
                                     {/*console.log("loading state", this.state.loading)*/}
                                 {/*    <Loader type="Rings"
                                         color='lightpink'

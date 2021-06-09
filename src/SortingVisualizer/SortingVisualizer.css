@@ -19,7 +19,7 @@
     color: white;
     display: inline-flex;
     /*align-items: space-between;*/
-    height: 70vh;
+    height: 500px;
     width: 100%;
 }
 
@@ -27,26 +27,46 @@
     width: 300px;
     height: 500px;
     border: 3px solid white;
+    align-items: center;
     border-radius: 15px;
     margin-right: 200px;
     /*padding-left: 100px;*/
 }
 
-button {
+.button {
     background-color: lightcoral;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
     border-radius: 12px;
-    margin-left: 10px;
+    margin-left: 15px;
     transition-duration: 0.4s;
 }
 
-    button:hover {
+    .button:hover {
+        background-color: purple; /* Green */
+        color: white;
+    }
+
+.button_dropdown {
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 12px;
+    margin-left: 15px;
+    transition-duration: 0.4s;
+}
+
+    .button_dropdown:hover {
         background-color: purple; /* Green */
         color: white;
     }
@@ -59,7 +79,7 @@ button {
 }
 
 .algo-button {
-    margin-top: 20px;
+    /* margin-top: 20px;*/
 }
 
 .select-box--container {
@@ -71,7 +91,7 @@ button {
 
 
 .select-box--box {
-    margin: 150px 35px;
+    margin: 30px 20px;
     width: 200px;
     position: relative;
     /*left: 150px;*/
@@ -126,7 +146,27 @@ button {
 }
 
 .descText {
+    position: center;
     font-size: 15px;
-    overflow: scroll;
-    height: 120px;
+    /* overflow: scroll;*/
+    height: 200px;
 }
+
+.button_dropdown {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 12px;
+    margin-left: 15px;
+    transition-duration: 0.4s;
+}
+
+    .button_dropdown:hover {
+        background-color: purple; /* Green */
+        color: white;
+    }
