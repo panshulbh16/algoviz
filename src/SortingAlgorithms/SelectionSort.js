@@ -15,6 +15,7 @@ function selectionSort(auxiliaryArray, animations) {
 			animations.push([j, minIndex]);
 			animations.push([j, minIndex]);
 			animations.push([minIndex, auxiliaryArray[minIndex]]);
+			
 			if (auxiliaryArray[minIndex] > auxiliaryArray[j]) {
 				minIndex = j;
 			}
