@@ -118,7 +118,7 @@ class PathfindingVisualizer extends Component {
     }
 
   clearGrid() {
-    if (this.state.visualizingAlgorithm || this.state.generatingMaze) {
+    if (this.state.visualizingAlgorithm) {
       return;
     }
     for (let row = 0; row < this.state.grid.length; row++) {
@@ -143,7 +143,8 @@ class PathfindingVisualizer extends Component {
   clearPath() {
     if (this.state.visualizingAlgorithm ) {
       return;
-    }
+      }
+
     for (let row = 0; row < this.state.grid.length; row++) {
       for (let col = 0; col < this.state.grid[0].length; col++) {
         if (
@@ -217,9 +218,6 @@ class PathfindingVisualizer extends Component {
     }
   };
 
-
-
-
     visualizeAlgo(algoname) {
         if (this.state.visualizingAlgorithm) {
             return;
@@ -229,6 +227,7 @@ class PathfindingVisualizer extends Component {
             return;
         }
         this.setState({ visualizingAlgorithm: true });
+        this.clearPath();
         setTimeout(() => {
             const { grid } = this.state;
             const startNode = grid[startNodeRow][startNodeCol];
