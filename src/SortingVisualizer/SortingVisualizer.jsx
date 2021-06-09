@@ -272,7 +272,7 @@ export default class SortingVisualizer extends React.Component {
                                     </div>
 
                 
-                                    <div className="descText">{this.state.text}</div> 
+                                    <div className="desText">{this.state.text.split('\n').map((item, i) => <p key={i}>{item}</p>)}</div>
 
 
                                     

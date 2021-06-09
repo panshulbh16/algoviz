@@ -13,7 +13,7 @@
     width: var(--width);
     height: var(--height);
     background-color: white ;
-    border: 1px solid powderblue;
+    border: 1px solid lightgray;
     border-radius: 5px;
     /*   outline: 0.2px solid rgb(175, 216, 248); */
     display: inline-block;

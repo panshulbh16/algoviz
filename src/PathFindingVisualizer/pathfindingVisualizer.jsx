@@ -383,7 +383,8 @@ class PathfindingVisualizer extends Component {
 
                 <div className="description">
                     {
-                        <div className="desc_text">{this.state.text}</div> 
+                        <div className="desc_text">{this.state.text.split('\n').map((item, i) => <p key={i}>{item}</p>)}</div>
+      
                     }
 
                     

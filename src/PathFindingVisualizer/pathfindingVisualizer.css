@@ -45,8 +45,8 @@ button {
 .desc_text {
     position: center;
     font-size: 15px;
-    /* overflow: scroll;*/
-    height: 200px;
+    overflow: scroll;
+    height: 400px;
     margin-right: 20px;
     margin-left: 20px;
     margin-top: 50px;

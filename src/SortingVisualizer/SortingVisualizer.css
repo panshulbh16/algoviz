@@ -145,11 +145,14 @@
     border-bottom: 10px solid purple;
 }
 
-.descText {
+.desText {
     position: center;
     font-size: 15px;
-    /* overflow: scroll;*/
-    height: 200px;
+    overflow: scroll;
+    height: 350px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 50px;
 }
 
 .button_dropdown {
