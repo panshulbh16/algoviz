@@ -20,7 +20,7 @@ class Cards extends React.Component{
 				  <div className="card-body">
 				    <h5 className="card-title">Mehul Shrivastava</h5>
 				    <p className="card-text"></p>
-				    <a href="#" className="btn btn-primary">Github</a>
+				    <a href="https://github.com/Maestro1011" className="btn btn-primary">Github</a>
 				  </div>
 				</div>
 
@@ -30,7 +30,7 @@ class Cards extends React.Component{
 				    <h5 className="card-title">Neha Raikar</h5>
 				    <p className="card-text"></p>
 					<br></br>
-				    <a href="#" className="btn btn-primary">Github</a>
+				    <a href="https://github.com/neharaikar" className="btn btn-primary">Github</a>
 				  </div>
 				</div>
 				
@@ -39,7 +39,7 @@ class Cards extends React.Component{
 				  <div className="card-body">
 				    <h5 className="card-title">Panshul Bharadwaj</h5>
 				    <p className="card-text"></p>
-				    <a href="#" className="btn btn-primary">Github</a>
+				    <a href="https://github.com/panshulbh16" className="btn btn-primary">Github</a>
 				  </div>
 				</div>
 				<div className="card" style={{width: '12rem'}}>
@@ -47,7 +47,7 @@ class Cards extends React.Component{
 				  <div className="card-body">
 				    <h5 className="card-title">Parakh Chaudhary</h5>
 				    <p className="card-text"></p>
-				    <a href="#" className="btn btn-primary">Github</a>
+				    <a href="https://github.com/parakhc4" className="btn btn-primary">Github</a>
 				  </div>
 				</div>
 			</div>
