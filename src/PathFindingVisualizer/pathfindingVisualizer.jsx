@@ -168,7 +168,6 @@ class PathfindingVisualizer extends Component {
     this.setState({
       grid: newGrid,
       visualizingAlgorithm: false,
-      generatingMaze: false,
     });
   }
 

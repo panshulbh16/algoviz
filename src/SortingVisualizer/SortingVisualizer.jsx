@@ -30,6 +30,8 @@ export default class SortingVisualizer extends React.Component {
             value: 30,
             speed: 10,
             speedState: "Speed",
+
+            visualizingAlgorithm: false,
             // misc
             // algoNow: "Nothing"
         };
@@ -41,6 +43,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     changeSpeed(speed) {
+        if (this.state.visualizingAlgorithm) {return;}
         let value = 20
         if (speed === "Slow") value = 30;
         else if (speed === "Medium") value = 20;
@@ -52,6 +55,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     dropDown = () => {
+        if (this.state.visualizingAlgorithm) {return;}
         this.setState(prevState => ({
             showItems: !prevState.showItems
         }));
@@ -70,6 +74,7 @@ export default class SortingVisualizer extends React.Component {
 
 
     resetArray(arraysize=30) {
+        if (this.state.visualizingAlgorithm) {return;}
         const array = [];
         for (let i = 0; i < arraysize; i++) {
             array.push(randomIntFromInterval(5, 350));
@@ -99,8 +104,8 @@ export default class SortingVisualizer extends React.Component {
 
 
     sort(sortingTechnique) {
+        if (this.state.visualizingAlgorithm) {return;}
         let animations = [];
-
         if (sortingTechnique === "NewArray") {
             this.resetArray();
         }
@@ -109,15 +114,18 @@ export default class SortingVisualizer extends React.Component {
             return;
         }
         else if (sortingTechnique === "Visualize MergeSort"){
+            // this.setState({ visualizingAlgorithm: true });
             animations = getMergeSortAnimations(this.state.array);
             // setTimeout(function(){ alert("After 5 seconds!"); }, 5000);
             console.log(this.state.array, animations);
         }
         else if (sortingTechnique === "Visualize BubbleSort"){
+            this.setState({ visualizingAlgorithm: true });
             animations = getBubbleSortAnimations(this.state.array);
             console.log(animations);
         }
         else if (sortingTechnique === "Visualize SelectionSort"){
+            this.setState({ visualizingAlgorithm: true });
             animations = getSelectionSortAnimations(this.state.array);
             console.log(animations);
         }
@@ -160,7 +168,6 @@ export default class SortingVisualizer extends React.Component {
                 // setTimeout(() => {
             // this.setState({ loading: false })
         // }, animations.length * 10);
-
         
     }
 
@@ -170,6 +177,7 @@ export default class SortingVisualizer extends React.Component {
     // }
 
     handleOnChange = (e) => {
+        if (this.state.visualizingAlgorithm) {return;}
         this.setState({value:e.target.value});
          this.resetArray(this.state.value)
     }
