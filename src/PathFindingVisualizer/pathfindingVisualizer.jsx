@@ -51,7 +51,13 @@ class PathfindingVisualizer extends Component {
       text: algo[0].desc,
       pathFindingShowItems: false,
       speedShowItems: false,
-  };
+    };
+
+    changeHandler() {
+        this.setState({ visualizingAlgorithm: true }, function () {
+            console.log('Handlerrrrrrrr',this.state.visualizingAlgorithm);
+        });
+    }
 
   updateDimensions = () => {
     this.setState({
@@ -126,7 +132,8 @@ class PathfindingVisualizer extends Component {
    
     }
 
-  clearGrid() {
+    clearGrid() {
+        { console.log(this.state.visualizingAlgorithm) }
     if (this.state.visualizingAlgorithm) {
       return;
     }
@@ -234,9 +241,13 @@ class PathfindingVisualizer extends Component {
             this.setState({ selectedalgo: "Select an Algorithm!" });
             return;
         }
+        
         this.setState({ visualizingAlgorithm: true });
+        { console.log(this.state.visualizingAlgorithm) }
+        this.changeHandler();
         this.clearPath();
         setTimeout(() => {
+            
             const { grid } = this.state;
             const startNode = grid[startNodeRow][startNodeCol];
             const finishNode = grid[finishNodeRow][finishNodeCol];
@@ -247,7 +258,6 @@ class PathfindingVisualizer extends Component {
                 nodesInShortestPathOrder = getNodesInShortestPathOrderDijkstra(
                     finishNode
                 );
-
             }
             else if (algoname === "Visualize AStar") {
                 visitedNodesInOrder = astar(grid, startNode, finishNode);
@@ -272,6 +282,7 @@ class PathfindingVisualizer extends Component {
                 );
 
             }
+           this.setState({ visualizingAlgorithm: true });
            this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
         }, this.state.speed);
     }
