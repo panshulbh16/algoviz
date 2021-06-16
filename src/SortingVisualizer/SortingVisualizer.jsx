@@ -37,10 +37,12 @@ export default class SortingVisualizer extends React.Component {
         };
     }
 
+
     componentDidMount() {
         this.resetArray();
         this.modifyState();
     }
+
 
     changeSpeed(speed) {
         if (this.state.visualizingAlgorithm) {return;}
@@ -51,8 +53,8 @@ export default class SortingVisualizer extends React.Component {
 
         this.setState({ speedState: speed });
         this.setState({ speed: value });
-
     }
+
 
     dropDown = () => {
         if (this.state.visualizingAlgorithm) {return;}
@@ -60,6 +62,7 @@ export default class SortingVisualizer extends React.Component {
             showItems: !prevState.showItems
         }));
     };
+
 
     selectItem = (algo,item,id,text) => {
          console.log(item,id,text);
@@ -83,24 +86,22 @@ export default class SortingVisualizer extends React.Component {
         this.setState({ array });
     }
 
+
     modifyState() {
         let title = [];
         let algorithmName = [];
         let desc = [];
-        // console.log(this.state.myobj, this.state.array);
         for (let i = 0; i < algo.length; i++) {
             title.push(algo[i]["name"]);
             algorithmName.push(algo[i]["algoName"]);
             desc.push(algo[i]["desc"]);
         }
-        // console.log(title, algorithmName)
         this.setState({
             title: title,
             algorithmName: algorithmName,
             desc: desc,
         });
     }
-
 
 
     sort(sortingTechnique) {
@@ -123,22 +124,18 @@ export default class SortingVisualizer extends React.Component {
             this.setState({ visualizingAlgorithm: true });
             animations = getBubbleSortAnimations(this.state.array);
             console.log(animations);
+            console.log("set true");
         }
         else if (sortingTechnique === "Visualize SelectionSort"){
             this.setState({ visualizingAlgorithm: true });
+            console.log("set true");
             animations = getSelectionSortAnimations(this.state.array);
             console.log(animations);
         }
-
-        // animations = this.getAnimationArray(animations, functionName);
-       /*
-        *this.setState({ loading: true })
         setTimeout(() => {
-            this.setState({ loading: false })
+            this.setState({ visualizingAlgorithm: false })
         }, animations.length * 10);
-        */
 
-        // else --> call your algo function ;)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 3 !== 2;
@@ -157,24 +154,14 @@ export default class SortingVisualizer extends React.Component {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
+
                 }, i * this.state.speed);
             }
-            // this.setState({ loading: false }) 
-        // }}, 10);
 }
-        
-        //         this.resetArray()
-        
-                // setTimeout(() => {
-            // this.setState({ loading: false })
-        // }, animations.length * 10);
-        
+setTimeout(()=>{
+    console.log("Its done mate");
+}, animations.length);
     }
-
-
-    // runAnimation(sortingTechnique, functionName){
-
-    // }
 
     handleOnChange = (e) => {
         if (this.state.visualizingAlgorithm) {return;}
@@ -184,7 +171,6 @@ export default class SortingVisualizer extends React.Component {
 
     render() {
         const { array, title, algorithmName, functionName, desc, loading } = this.state;
-        // console.log(array, title, algorithmName, functionName, loading);
         return (
             <div className="parent_container">
                 <nav className="navbar">
@@ -224,26 +210,25 @@ export default class SortingVisualizer extends React.Component {
                                         onClick={() => this.changeSpeed("Slow")}
                                     >
                                         Slow
-                   </button>
+                                    </button>
                                     <button
                                         className="button_dropdown"
                                         type="button"
                                         onClick={() => this.changeSpeed("Medium")}
                                     >
                                         Medium
-                  </button>
+                                    </button>
                                     <button
                                         className="button_dropdown"
                                         type="button"
                                         onClick={() => this.changeSpeed("Fast")}
                                     >
                                         Fast
-                  </button>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                 </nav>
                 <div className="container">
                     <div className="description">
@@ -281,63 +266,30 @@ export default class SortingVisualizer extends React.Component {
 
                 
                                     <div className="desText">{this.state.text.split('\n').map((item, i) => <p key={i}>{item}</p>)}</div>
-
-
-                                    
-                                    {/*console.log("loading state", this.state.loading)*/}
-                                {/*    <Loader type="Rings"
-                                        color='lightpink'
-                                        height={100}
-                                        width={100}
-                                        visible={this.state.loading}> </Loader>*/}
-
-                                    {/*console.log("loading state", this.state.loading)*/}
-
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                     <div className="array-container">
-
                         {
                             array.map((value, idx) => (
                                 <div
                                     className="array-bar" key={idx}
                                     key={idx}
                                     style={{ height: `${value}px` , width: `${450/this.state.value}px`}}
-                                >
-                                    
+                                > 
                                 </div>
                             ))
                         }
                         <hr />
-
-
-                        {/*<span onClick={() => this.resetArray()}>Running {this.state.algoNow}</span>*/}
-
-                        {/*{
-                        title.map((value, idx) => (
-                            <button onClick={this.sort.bind(this, algorithmName[idx], functionName[idx])}>{value}</button>
-                        ))
-                    }*/}
-
                     </div>
-
-
                     <Particles className='particles' params={particlesOptions} />
-
                 </div>
             </div>
         );
 
     }
 }
-
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
