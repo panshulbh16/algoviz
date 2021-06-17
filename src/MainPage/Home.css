@@ -1,29 +1,20 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Shadows+Into+Light+Two&display=swap');
 
 .sort-btn {
-	/* margin-top: 50vh;
-	font-weight: 50px;
-	font-size: 500px; */
 	color: dodgerblue;
-	
 }
 .route-to {
 	padding-bottom: 100px;
 }
 
 .sort-btn h3 {
-	/*font-family: 'Amatic SC', cursive;*/
-	/*font-family: 'Roboto', sans-serif;*/
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-weight: bolder;
 	color: black;
 	border-radius: 12px;
 }
 
-
 .path-btn h3 {
-	/*font-family: 'Amatic SC', cursive;*/
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-weight: bolder;
 	color: black;
@@ -34,7 +25,6 @@ path-btn {
 	color: dodgerblue;
 }
 .fixed-btn {
-	/*background-color: black;*/
 	font-size: 1.25rem;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-weight: bolder;

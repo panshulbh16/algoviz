@@ -31,6 +31,9 @@ export default class SortingVisualizer extends React.Component {
             speed: 10,
             speedState: "Speed",
 
+            sortingShowItems: false,
+            speedShowItems: false,
+
             visualizingAlgorithm: false,
             // misc
             // algoNow: "Nothing"
@@ -56,12 +59,26 @@ export default class SortingVisualizer extends React.Component {
     }
 
 
-    dropDown = () => {
-        if (this.state.visualizingAlgorithm) {return;}
-        this.setState(prevState => ({
-            showItems: !prevState.showItems
-        }));
-    };
+    // dropDown = () => {
+    //     if (this.state.visualizingAlgorithm) {return;}
+    //     this.setState(prevState => ({
+    //         showItems: !prevState.showItems
+    //     }));
+    // };
+
+    dropDown = (dropDownName) => {
+        console.log(dropDownName);
+        if (dropDownName === "sorting"){
+          this.setState(prevState => ({
+            sortingShowItems: !prevState.sortingShowItems
+          }));
+        }
+        else{
+          this.setState(prevState => ({
+              speedShowItems: !prevState.speedShowItems
+          }));
+        }
+      };
 
 
     selectItem = (algo,item,id,text) => {
@@ -192,16 +209,16 @@ setTimeout(()=>{
                                     {this.state.speedState}
                                     {/*{console.log(this.state.selectedItem.value)}*/}
                                 </div>
-                                <div className="select-box--arrow" onClick={this.dropDown}>
+                                <div className="select-box--arrow" onClick={() => this.dropDown("sorting")}>
                                     <span
-                                        className={`${this.state.speedState !== "Speed"
+                                        className={`${this.state.sortingShowItems
                                             ? "select-box--arrow-up"
                                             : "select-box--arrow-down"
                                             }`}
                                     />
                                 </div>
                                 <div
-                                    style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.showItems ? "block" : "none" }}
+                                    style={{ paddingRight: "10%", left: '18%', position: "absolute", border: "solid", borderWidth: 'thin', backgroundColor: 'rgba(0,0,0,1)', display: this.state.sortingShowItems ? "block" : "none" }}
                                     className={"select-box--items"}
                                 >
                                     <button
@@ -241,14 +258,14 @@ setTimeout(()=>{
                                     </div>
                                     <div className="select-box--arrow" onClick={this.dropDown}>
                                         <span
-                                            className={`${this.state.showItems
+                                            className={`${this.state.speedShowItems
                                                     ? "select-box--arrow-up"
                                                     : "select-box--arrow-down"
                                                 }`}
                                         />
                                     </div>
                                     <div
-                                        style={{ paddingRight:"10%",left:'18%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.showItems ? "block" : "none" }}
+                                        style={{ paddingRight:"10%",left:'18%' ,position: "absolute", border : "solid", borderWidth: 'thin' , backgroundColor: 'rgba(0,0,0,1)',  display: this.state.speedShowItems ? "block" : "none" }}
                                         className={"select-box--items"}
                                     >
                                         {algo.map(item => (
