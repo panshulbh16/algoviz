@@ -149,6 +149,13 @@ export default class SortingVisualizer extends React.Component {
             animations = getSelectionSortAnimations(this.state.array);
             console.log(animations);
         }
+        
+        /* else if (sortingTechnique === (YOUR ALGORITHM NAME HERE)){
+        //  this.setState({visualizingALgorithm: true});
+        //  animations = getYOURALGORITHMAnimations(this.state.array);
+        // }
+        */
+        
         setTimeout(() => {
             this.setState({ visualizingAlgorithm: false })
         }, animations.length * 10);
