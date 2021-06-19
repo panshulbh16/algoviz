@@ -259,6 +259,12 @@ class PathfindingVisualizer extends Component {
                 );
 
             }
+            // else if (algoname === "YOUR ALGORITHM NAME HERE.jsx") {
+            //     visitedNodesInOrder = YOUR ALGORITHM METHOD(grid, startNode, finishNode);
+            //     nodesInShortestPathOrder = getNodesInShortestPathOrderYOURALGORITHM(
+            //         finishNode
+            //     );
+            // }
             this.setState({ visualizingAlgorithm: true });
             this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
         }, this.state.speed);
