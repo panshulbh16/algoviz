@@ -27,11 +27,11 @@ In order to contribute a new sorting algorithm, you have to ensure the following
 
 ### 1) Add your code into a new Javascript file to the folder `src/SortingAlgorithms`
 
-<img src="docs/images/Sorting_viz_fns_open_source.png" width=200px>
+<img src="docs/images/Sorting_viz_tree.png" width=200px style="text-align:center;">
 
 Algorithm has to be implemented in the form of a Javascript function, with the array as it's parameter. It must return, to it's parent component, a visualization array with the elements in the following form.
 
-<img src="docs/images/animation_steps.png" width=100px>
+<img src="docs/images/animation_steps.png" width=250px>
 
 ### 2) Add the calling function
 
@@ -41,6 +41,9 @@ Inside the <a href="https://github.com/panshulbh16/algoviz/blob/master/src/Sorti
     this.setState({visualizingALgorithm: true});
     animations = getYOURALGORITHMAnimations(this.state.array);
 }`
+
+<img src="docs/images/Sorting_viz_fns_open_source.png" width=600px>
+
 You can understand more about this step <a href="https://github.com/panshulbh16/algoviz/blob/master/docs/images/Sorting_viz_fns_open_source.png">here</a>.
 
 ### 3) Add basic information such as complexities, and you're ready to go!
@@ -59,7 +62,7 @@ In order to contribute a new Pathfinding Algorithm, you have to ensure the follo
 
 ### 1) Add your code into a new Javascript file to the folder `src/pathfindingAlgorithms`
 
-<img src="docs/images/pathfinding_viz_tree.png" width=200px>
+<img src="docs/images/pathfinding_viz_tree.png" width=200px style="text-align:center;">
 
 Algorithm has to be implemented in the form of a Javascript function, with the <i>grid, starting node and goal node</i> as it's parameter. It must return, to it's parent component, an array comprising of all of the visited nodes in order.
 
@@ -73,6 +76,7 @@ Finally, inside the <a href="https://github.com/panshulbh16/algoviz/blob/master/
                     finishNode
                 );
             }`
+<img src="docs/images/Pathfinding_viz_fns_open_source.png" width=600px>
 
 You can understand more about this step <a href="https://github.com/panshulbh16/algoviz/blob/master/docs/images/Pathfinding_viz_fns_open_source.png">here</a>.
 
