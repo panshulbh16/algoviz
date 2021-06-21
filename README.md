@@ -55,7 +55,7 @@ Finally, basic information of your algorithm such as it's name, it's function ca
 This project currently consists of the following sorting algorithms:
 * A-star
 * Dijkstra's
-* Bredth First Search
+* Breadth First Search
 * Depth First Search
 
 In order to contribute a new Pathfinding Algorithm, you have to ensure the following steps:
@@ -64,7 +64,7 @@ In order to contribute a new Pathfinding Algorithm, you have to ensure the follo
 
 <img src="docs/images/pathfinding_viz_tree.png" width=200px style="text-align:center;">
 
-Algorithm has to be implemented in the form of a Javascript function, with the <i>grid, starting node and goal node</i> as it's parameter. It must return, to it's parent component, an array comprising of all of the visited nodes in order.
+Algorithm has to be implemented in the form of a Javascript function, with the <i>grid, starting node and goal node</i> as it's parameter. It must return, to it's parent component, an array comprising of all of the visited nodes and an array comprising of nodes in the shortest path in order.
 
 ### 2) Add the calling function
 
@@ -82,6 +82,6 @@ You can understand more about this step <a href="https://github.com/panshulbh16/
 
 ### 3) Add basic information such as complexities, and you're ready to go!
 
-Finally, basic information of your algorithm such as it's name, it's function calling name and a basic write-up (with the complexities) must be added to the <a href="">allAlgorithms_pathfinding.js</a> javascript object which will add your information to the dropdown menus.
+Finally, basic information of your algorithm such as it's name, it's function calling name and a basic write-up (with the complexities) must be added to the <a href="">https://github.com/panshulbh16/algoviz/blob/master/src/PathFindingVisualizer/allAlgorithms_pathfinding.js</a> javascript object which will add your information to the dropdown menus.
 
 Further thorough explanations have been provided in the code as comments and will guide you to have your algorithm set up and ready to be visualized!
