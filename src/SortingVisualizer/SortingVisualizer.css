@@ -148,7 +148,7 @@
 .desText {
     position: center;
     font-size: 15px;
-    overflow: hidden;
+    overflow: scroll;
     height: 350px;
     margin-right: 10px;
     margin-left: 10px;
