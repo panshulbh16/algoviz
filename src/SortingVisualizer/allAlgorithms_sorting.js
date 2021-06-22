@@ -16,7 +16,7 @@ export const algo = [
 		"id": 3,
 		"algoName": "Visualize BubbleSort",
 		"name": "BubbleSort",
-		"desc" : "Bubble Sort is a simple algorithm which is used to sort a given set of n elements provided in form of an array with n number of elements. Bubble Sort compares all the element one by one and sort them based on their values.\n‎Time-Complexity: O(n)‎‎‏‏‎‏‏‎‎‏‏‎\n ‎‎Space-Complexity: O(1)"
+		"desc" : "Bubble Sort is a simple algorithm which is used to sort a given set of n elements provided in form of an array with n number of elements. Bubble Sort compares all the element one by one and sort them based on their values.\n‎Time-Complexity: O(n^2)‎‎‏‏‎‏‏‎‎‏‏‎\n ‎‎Space-Complexity: O(n)"
 	},
 	{
 		"id": 4,
